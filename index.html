@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HabitFlow — Habit Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">✓</span><span>Habit<span>Flow</span></span></div>
+      <p class="side-label">YOUR SPACE</p>
+      <button class="nav active" id="dashboardNav">▦ &nbsp; Dashboard</button>
+      <div class="side-tip"><span>✦</span><strong>Small steps add up.</strong><p>Focus on showing up, not being perfect.</p></div>
+      <p class="saved-note">Your data is saved in this browser.</p>
+    </aside>
+
+    <main class="main">
+      <header class="header">
+        <div><p class="eyebrow">YOUR DAILY RESET</p><h1>Habit dashboard<span>.</span></h1><p class="subtitle">Track your habits, understand your progress, and keep moving forward.</p></div>
+        <div class="header-actions"><span class="date-chip" id="todayLabel"></span><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☾ <span>Dark mode</span></button></div>
+      </header>
+
+      <section class="controls-panel">
+        <label class="select-wrap">Select habit
+          <select id="habitSelect"></select>
+        </label>
+        <label class="select-wrap">Select month
+          <select id="monthSelect"></select>
+        </label>
+        <div class="control-info"><span class="tiny-label">SELECTED HABIT SCORE</span><strong id="selectedScore">0%</strong><small id="selectedScoreText">0 completed out of 31 days</small></div>
+      </section>
+
+      <section class="stats-grid">
+        <article class="stat-card"><div class="stat-label">YES · Completed</div><strong id="yesCount">0</strong><small>Habit days completed this month</small></article>
+        <article class="stat-card"><div class="stat-label">NO · Not completed</div><strong id="noCount">0</strong><small>Days left or missed for this habit</small></article>
+        <article class="stat-card"><div class="stat-label">All habits completed</div><strong id="allDone">0</strong><small>Completed habit checkmarks this month</small></article>
+        <article class="stat-card"><div class="stat-label">Overall completion</div><strong id="overallScore">0%</strong><small>Completed checkmarks ÷ possible checkmarks</small></article>
+      </section>
+
+      <section class="chart-grid">
+        <article class="panel chart-panel wide"><div class="panel-head"><div><h2>Monthly habit performance</h2><p>Completion percentage for each month of the selected year.</p></div><span class="chart-tag" id="yearTag"></span></div><canvas id="yearChart" aria-label="Monthly habit performance bar chart"></canvas></article>
+        <article class="panel chart-panel"><div class="panel-head"><div><h2>Selected month breakdown</h2><p>Completed vs. not completed days.</p></div></div><div class="donut-wrap"><canvas id="donutChart" aria-label="Completed versus not completed donut chart"></canvas><div class="donut-center"><strong id="donutPercent">0%</strong><span>completed</span></div></div><div class="legend"><span><i class="dot done-dot"></i> Yes <b id="legendYes">0</b></span><span><i class="dot no-dot"></i> No <b id="legendNo">0</b></span></div></article>
+        <article class="panel chart-panel wide"><div class="panel-head"><div><h2 id="trendTitle">Daily completion trend</h2><p>Daily completion rate for the selected habit.</p></div></div><canvas id="trendChart" aria-label="Daily completion line chart"></canvas></article>
+        <article class="panel chart-panel"><div class="panel-head"><div><h2>Habit leaderboard</h2><p>Best completion rates this month.</p></div></div><div id="leaderboard" class="leaderboard"></div></article>
+      </section>
+
+      <section class="panel habits-panel">
+        <div class="panel-head"><div><h2>Your daily habits</h2><p id="dayLabel">Check off what you complete today.</p></div><div class="day-controls"><button class="small-btn" id="prevDay">‹</button><button class="small-btn" id="todayBtn">Today</button><button class="small-btn" id="nextDay">›</button></div></div>
+        <div class="day-summary"><span id="dayProgressText">0 of 10 complete</span><div class="progress-track"><div id="dayProgressFill"></div></div><strong id="dayProgressPercent">0%</strong></div>
+        <div id="habitList" class="habit-list"></div>
+      </section>
+      <footer>HabitFlow <span>•</span> Progress saved automatically on this device</footer>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
